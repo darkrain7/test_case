@@ -139,12 +139,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findById(Long id) {
-
-        if (productRepository.findById(id) == null) {
+        Product product = productRepository.findById(id);
+        if (product == null) {
             log.error("Продукт не найден");
-            return null;
-        } else
-            return productRepository.findById(id);
+        }
+        return product;
+//        if (productRepository.findById(id) == null) {
+//
+//            return null;
+//        } else
+//            return productRepository.findById(id); // а то два раза вызаешь, память экономить надо)
     }
 
     @Override
