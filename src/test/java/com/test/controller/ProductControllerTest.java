@@ -55,11 +55,16 @@ public class ProductControllerTest {
     }
 
     @Test
+<<<<<<< HEAD
     public void getProductAll() throws Exception {
+=======
+    public void getProductAll() throws Exception { т
+>>>>>>> origin/master
         mockMvc.perform(get("/findAll"))
                 .andDo(print())
                 .andExpect(jsonPath("$.[*].id", hasItems(1, 2, 3, 4)));
     }
+<<<<<<< HEAD
 
     @Test
     public void ProductUpdateTest() throws Exception {
@@ -85,3 +90,6 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$.id").doesNotExist());
     }
 }
+=======
+}
+>>>>>>> origin/master
