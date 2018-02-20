@@ -152,20 +152,30 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Boolean updateProduct(Long id, Long count, Long price) {
+    public Product updateProduct(Long id, Long count, Long price) {
 
         try {
             Product product = productRepository.findById(id);
 
-            product.setCount(count);
-            product.setPrice(price);
+            if (count > 0) {
+                if (price > 0) {
 
-            productRepository.save(product);
+                    product.setCount(count);
+                    product.setPrice(price);
+                    productRepository.save(product);
+                    return product;
 
-            return true;
+                } else {
+                    log.error("Операция невозмомжна(количество не может быть отрицательным)");
+                    return null;
+                }
+            } else {
+                log.error("Операция невозмомжна(цена не может быть отрицательной)");
+                return null;
+            }
         } catch (Exception e) {
             log.error("Ошибка редактирования данных(Product)");
-            return false;
+            return null;
         }
     }
 }

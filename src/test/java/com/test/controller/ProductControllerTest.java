@@ -55,9 +55,33 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void getProductAll() throws Exception { // как то так, раскидай как это рабоает
+    public void getProductAll() throws Exception {
         mockMvc.perform(get("/findAll"))
                 .andDo(print())
                 .andExpect(jsonPath("$.[*].id", hasItems(1, 2, 3, 4)));
+    }
+
+    @Test
+    public void ProductUpdateTest() throws Exception {
+        mockMvc.perform(get("/update?id=1&count=15&price=10"))
+                .andDo(print())
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.count", is(15)))
+                .andExpect(jsonPath("$.price", is(10)));
+    }
+
+    @Test
+    public void ProductUpdateIncorrectCountTest() throws Exception {
+        mockMvc.perform(get("/update?id=1&count=-15&price=10"))
+                .andDo(print())
+                .andExpect(jsonPath("$").doesNotExist());
+
+    }
+
+    @Test
+    public void ProductUpdateIncorrectPriceTest() throws Exception {
+        mockMvc.perform(get("/update?id=1&count=15&price=-10"))
+                .andDo(print())
+                .andExpect(jsonPath("$.id").doesNotExist());
     }
 }

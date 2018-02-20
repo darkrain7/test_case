@@ -34,20 +34,10 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    Boolean updateProduct(@RequestParam(value = "id") Long id,
+    Product updateProduct(@RequestParam(value = "id") Long id,
                           @RequestParam(value = "count", required = false, defaultValue = "-1") Long count,
                           @RequestParam(value = "price", required = false, defaultValue = "-1") Long price) {
 
-        if (count > 0) {
-            if (price > 0) {
-                return productService.updateProduct(id, count, price);
-            } else {
-                log.error("Операция невозмомжна(количество не может быть отрицательным)");
-                return false;
-            }
-        } else {
-            log.error("Операция невозмомжна(цена не может быть отрицательной)");
-            return false;
-        }
+        return productService.updateProduct(id, count, price);
     }
 }
