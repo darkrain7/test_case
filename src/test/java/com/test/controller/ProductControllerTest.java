@@ -55,7 +55,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void getProductAll() throws Exception { // как то так, раскидай как это рабоает
+    public void getProductAll() throws Exception { т
         mockMvc.perform(get("/findAll"))
                 .andDo(print())
                 .andExpect(jsonPath("$.[*].id", hasItems(1, 2, 3, 4)));
