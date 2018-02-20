@@ -82,6 +82,6 @@ public class ProductControllerTest {
     public void ProductUpdateIncorrectPriceTest() throws Exception {
         mockMvc.perform(get("/update?id=1&count=15&price=-10"))
                 .andDo(print())
-                .andExpect(jsonPath("$.id").doesNotExist());
+                .andExpect(jsonPath("$").doesNotExist());
     }
 }
