@@ -1,0 +1,19 @@
+server:
+  port: 8080
+feign:
+  client:
+    default:
+      connect-timeout: 20000
+      read-timeout: 20000
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/postgres
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+
