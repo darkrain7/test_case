@@ -17,6 +17,6 @@ public interface ProductService {
 
     Product findById(Long id);
 
-    Product updateProduct(Long id, Long count, Long price);
+    Boolean updateProduct(Long id, Long count, Long price);
 
 }

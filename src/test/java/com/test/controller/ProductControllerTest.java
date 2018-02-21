@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -65,23 +65,23 @@ public class ProductControllerTest {
     public void ProductUpdateTest() throws Exception {
         mockMvc.perform(get("/update?id=1&count=15&price=10"))
                 .andDo(print())
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.count", is(15)))
-                .andExpect(jsonPath("$.price", is(10)));
+                .andExpect(status().isOk())
+                .andExpect(content().string("true"));
     }
 
     @Test
     public void ProductUpdateIncorrectCountTest() throws Exception {
         mockMvc.perform(get("/update?id=1&count=-15&price=10"))
                 .andDo(print())
-                .andExpect(jsonPath("$").doesNotExist());
-
+                .andExpect(status().isOk())
+                .andExpect(content().string("false"));
     }
 
     @Test
     public void ProductUpdateIncorrectPriceTest() throws Exception {
         mockMvc.perform(get("/update?id=1&count=15&price=-10"))
                 .andDo(print())
-                .andExpect(jsonPath("$").doesNotExist());
+                .andExpect(status().isOk())
+                .andExpect(content().string("false"));
     }
 }

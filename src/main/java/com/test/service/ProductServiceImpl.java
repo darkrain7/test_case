@@ -144,38 +144,33 @@ public class ProductServiceImpl implements ProductService {
             log.error("Продукт не найден");
         }
         return product;
-//        if (productRepository.findById(id) == null) {
-//
-//            return null;
-//        } else
-//            return productRepository.findById(id); // а то два раза вызаешь, память экономить надо)
     }
 
     @Override
-    public Product updateProduct(Long id, Long count, Long price) {
+    public Boolean updateProduct(Long id, Long count, Long price) {
 
         try {
             Product product = productRepository.findById(id);
 
             if (count > 0) {
-                if (price > 0) {
+                if (price >= 0) {
 
                     product.setCount(count);
                     product.setPrice(price);
                     productRepository.save(product);
-                    return product;
+                    return true;
 
                 } else {
                     log.error("Операция невозмомжна(количество не может быть отрицательным)");
-                    return null;
+                    return false;
                 }
             } else {
                 log.error("Операция невозмомжна(цена не может быть отрицательной)");
-                return null;
+                return false;
             }
         } catch (Exception e) {
             log.error("Ошибка редактирования данных(Product)");
-            return null;
+            return false;
         }
     }
 }

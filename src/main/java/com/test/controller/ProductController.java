@@ -34,7 +34,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.GET)
-    Product updateProduct(@RequestParam(value = "id") Long id,
+    Boolean updateProduct(@RequestParam(value = "id") Long id,
                           @RequestParam(value = "count", required = false, defaultValue = "-1") Long count,
                           @RequestParam(value = "price", required = false, defaultValue = "-1") Long price) {
 
