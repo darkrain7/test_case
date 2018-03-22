@@ -14,9 +14,9 @@ public class AttributeServiceImpl implements AttributeService {
     private final CategoryService categoryService;
     private final AttributeRepository attributeRepository;
 
-    private final String TV = "TV";
-    private final String Fridge = "Fridge";
-    private final String Washer = "Washer";
+    private final String categoryTV = "TV";
+    private final String categoryFridge = "Fridge";
+    private final String categoryWasher = "Washer";
 
 
     @Autowired
@@ -27,7 +27,7 @@ public class AttributeServiceImpl implements AttributeService {
 
 
     @Override
-    public Boolean create(Attribute attribute) {
+    public Boolean insertRowIntoDB(Attribute attribute) {
 
         try {
             attributeRepository.save(attribute);
@@ -40,51 +40,51 @@ public class AttributeServiceImpl implements AttributeService {
 
 
     @Override
-    public Boolean createData() {
+    public Boolean createAttributes() {
         try {
 
-            Category category = categoryService.findByName(TV);
+            Category category = categoryService.findByName(categoryTV);
 
-            create(Attribute.builder()
+            insertRowIntoDB(Attribute.builder()
                     .name("Diagonal")
                     .category(category)
                     .build());
 
-            create(Attribute.builder()
+            insertRowIntoDB(Attribute.builder()
                     .name("Depth")
                     .category(category)
                     .build());
 
-            create(Attribute.builder()
-                    .name("Type of TV")
+            insertRowIntoDB(Attribute.builder()
+                    .name("Type of categoryTV")
                     .category(category)
                     .build());
 
-            category = categoryService.findByName(Fridge);
+            category = categoryService.findByName(categoryFridge);
 
-            create(Attribute.builder()
+            insertRowIntoDB(Attribute.builder()
                     .name("Freezer")
                     .category(category)
                     .build());
 
-            category = categoryService.findByName(Washer);
+            category = categoryService.findByName(categoryWasher);
 
-            create(Attribute.builder()
+            insertRowIntoDB(Attribute.builder()
                     .name("Width")
                     .category(category)
                     .build());
 
-            create(Attribute.builder()
+            insertRowIntoDB(Attribute.builder()
                     .name("Depth")
                     .category(category)
                     .build());
 
-            create(Attribute.builder()
+            insertRowIntoDB(Attribute.builder()
                     .name("Height")
                     .category(category)
                     .build());
 
-            create(Attribute.builder()
+            insertRowIntoDB(Attribute.builder()
                     .name("Type of download")
                     .category(category)
                     .build());

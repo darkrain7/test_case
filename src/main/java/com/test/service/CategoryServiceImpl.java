@@ -17,7 +17,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Boolean create(Category category) {
+    public Boolean insertRowIntoDB(Category category) {
         try {
             categoryRepository.save(category);
             return true;
@@ -28,11 +28,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Boolean createData() {
+    public Boolean createCategories() {
         try {
-            create(Category.builder().name("TV").build());
-            create(Category.builder().name("Fridge").build());
-            create(Category.builder().name("Washer").build());
+            insertRowIntoDB(Category.builder().name("TV").build());
+            insertRowIntoDB(Category.builder().name("Fridge").build());
+            insertRowIntoDB(Category.builder().name("Washer").build());
             return true;
         } catch (Exception e){
             log.error("Ошибка при добавлении записей в бд(category)");

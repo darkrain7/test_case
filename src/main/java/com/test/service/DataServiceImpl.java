@@ -4,12 +4,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by User on 20.02.2018.
- */
 @Slf4j
 @Service
-public class CreateServiceImpl implements CreateService {
+public class DataServiceImpl implements DataService {
 
     private final CategoryService categoryService;
     private final ProductService productService;
@@ -17,7 +14,7 @@ public class CreateServiceImpl implements CreateService {
     private final AttributeValueService attributeValueService;
 
     @Autowired
-    public CreateServiceImpl(CategoryService categoryService, ProductService productService, AttributeService attributeService, AttributeValueService attributeValueService) {
+    public DataServiceImpl(CategoryService categoryService, ProductService productService, AttributeService attributeService, AttributeValueService attributeValueService) {
         this.categoryService = categoryService;
         this.productService = productService;
         this.attributeService = attributeService;
@@ -25,13 +22,13 @@ public class CreateServiceImpl implements CreateService {
     }
 
     @Override
-    public Boolean createFullData() {
+    public Boolean createData() {
         try {
 
-            categoryService.createData();
-            productService.createData();
-            attributeService.createData();
-            attributeValueService.createData();
+            categoryService.createCategories();
+            productService.createProducts();
+            attributeService.createAttributes();
+            attributeValueService.createAttributeValues();
 
             return true;
         } catch (Exception e) {

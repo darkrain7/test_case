@@ -4,9 +4,9 @@ import com.test.model.Category;
 
 public interface CategoryService {
 
-    Boolean create(Category category);
+    Boolean insertRowIntoDB(Category category);
 
-    Boolean createData();
+    Boolean createCategories();
 
     Category findByName(String name);
 

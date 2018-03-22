@@ -16,9 +16,9 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryService categoryService;
     private final ProductRepository productRepository;
 
-    private static final String TV = "TV";
-    private static final String Fridge = "Fridge";
-    private static final String Washer = "Washer";
+    private static final String categoryTV = "TV";
+    private static final String categoryFridge = "Fridge";
+    private static final String categoryWasher = "Washer";
 
     @Autowired
     public ProductServiceImpl(CategoryService categoryService, ProductRepository productRepository) {
@@ -27,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Boolean create(Product product) {
+    public Boolean insertRowIntoDB(Product product) {
         try {
             productRepository.save(product);
             return true;
@@ -38,12 +38,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Boolean createData() {
+    public Boolean createProducts() {
         try {
 
-            Category category = categoryService.findByName(TV);
+            Category category = categoryService.findByName(categoryTV);
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("T19C350EX")
                     .brand_name("Samsung")
                     .count(100L)
@@ -51,7 +51,7 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("T22C350EX")
                     .brand_name("Samsung")
                     .count(150L)
@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("43UJ634V")
                     .brand_name("LG")
                     .count(200L)
@@ -67,9 +67,9 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            category = categoryService.findByName(Fridge);
+            category = categoryService.findByName(categoryFridge);
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("RF50K5920S8")
                     .brand_name("Samsung")
                     .count(200L)
@@ -77,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("DFE 4200 W")
                     .brand_name("Indesit")
                     .count(77L)
@@ -85,7 +85,7 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("A2F635CWMV")
                     .brand_name("Haier")
                     .count(55L)
@@ -93,9 +93,9 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            category = categoryService.findByName(Washer);
+            category = categoryService.findByName(categoryWasher);
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("F12U1HBS2")
                     .brand_name("LG")
                     .count(123L)
@@ -103,7 +103,7 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("MVB 59001 M")
                     .brand_name("Beko")
                     .count(156L)
@@ -111,7 +111,7 @@ public class ProductServiceImpl implements ProductService {
                     .category(category)
                     .build());
 
-            create(Product.builder()
+            insertRowIntoDB(Product.builder()
                     .name("MV65FZ23/S")
                     .brand_name("Gorenje")
                     .count(174L)

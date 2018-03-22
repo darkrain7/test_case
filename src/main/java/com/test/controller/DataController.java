@@ -1,6 +1,6 @@
 package com.test.controller;
 
-import com.test.service.CreateService;
+import com.test.service.DataService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequestMapping(value = "/create")
-public class FullCreateController {
+public class DataController {
 
-    private final CreateService createService;
+    private final DataService dataService;
 
     @Autowired
-    public FullCreateController(CreateService createService) {
-        this.createService = createService;
+    public DataController(DataService dataService) {
+        this.dataService = dataService;
     }
 
     @RequestMapping(value = "/new/all", method = RequestMethod.GET)
     Boolean createFullData() {
-        return createService.createFullData();
+        return dataService.createData();
     }
 
 }

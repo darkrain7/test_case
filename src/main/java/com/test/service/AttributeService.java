@@ -4,8 +4,8 @@ import com.test.model.Attribute;
 
 public interface AttributeService {
 
-    Boolean create(Attribute attribute);
+    Boolean insertRowIntoDB(Attribute attribute);
 
-    Boolean createData();
+    Boolean createAttributes();
 
 }

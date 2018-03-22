@@ -9,9 +9,9 @@ import java.util.Collection;
  */
 public interface ProductService {
 
-    Boolean create(Product product);
+    Boolean insertRowIntoDB(Product product);
 
-    Boolean createData();
+    Boolean createProducts();
 
     Collection<Product> findAll();
 
