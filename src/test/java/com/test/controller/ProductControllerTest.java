@@ -1,7 +1,7 @@
 package com.test.controller;
 
 import com.test.Application;
-import com.test.service.CreateService;
+import com.test.service.DataService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,14 +28,14 @@ public class ProductControllerTest {
     private WebApplicationContext context;
 
     @Autowired
-    private CreateService createService;
+    private DataService dataService;
 
     private MockMvc mockMvc;
 
     @Before
     public void setUp() {
         this.mockMvc = webAppContextSetup(context).build();
-        createService.createFullData();
+        dataService.createData();
     }
 
     @Test
